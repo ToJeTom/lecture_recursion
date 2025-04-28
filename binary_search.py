@@ -41,13 +41,31 @@ def binary_search(seq, number):
             return middle
     return None
 
+def recursive_binary_search(seq, num, left, right):
+    if num == seq[(right + left) // 2]:
+        return (right + left) // 2
+    if num == seq[right]:
+        return right
+    elif num == seq[left]:
+        return left
+    elif left +1 == right:
+        return None
+
+    if num < seq[(right + left) // 2]:
+        return recursive_binary_search(seq, num, left, (right + left) // 2)
+    else:
+        return recursive_binary_search(seq, num, (right + left) // 2, right)
+
+
 
 def main(file_name, number):
     sequence = read_data(file_name=file_name, key="ordered_numbers")
 
     # iterative binary search
-    binary_search(sequence, number=number)
-
+    a = binary_search(sequence, 999)
+    print(a)
+    b = recursive_binary_search(sequence, 999, 0, len(sequence)-1)
+    print(b)
 
 if __name__ == "__main__":
     my_file = "sequential.json"
