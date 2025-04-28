@@ -1,4 +1,10 @@
-import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt, numpy as np
+
+
+def flood_fill(img, x, y):
+    print(img.shape)
+    return None
+
 
 
 def main():
@@ -7,6 +13,7 @@ def main():
     # img = plt.imread("files/img2.png")[:, :, 0]
 
     # img = floodfill(img, 0, 0)
+    flood_fill(img, 0, 0)
 
     plt.imshow(img, cmap="gray")
     plt.show(block=False)
