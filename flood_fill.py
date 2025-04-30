@@ -1,24 +1,35 @@
 import matplotlib.pyplot as plt, numpy as np
 
+def show(img, time):
+    plt.imshow(img, cmap="gray")
+    plt.show(block=False)
+    plt.pause(time)
+    plt.clf()
 
 def flood_fill(img, x, y):
-    print(img.shape)
-    return None
+    a, b = img.shape
+    if 0 <= x < a and 0 <= y < b and img[x, y] == 1:
+        img[x, y] = 2
+
+        show(img, 0)
+
+        flood_fill(img, x + 1, y)
+        flood_fill(img, x - 1, y)
+        flood_fill(img, x, y + 1)
+        flood_fill(img, x, y - 1)
+        return None
+    else:
+        return img
 
 
 
 def main():
-    img = plt.imread("files/img0.png")[:, :, 0]
+    # img = plt.imread("files/img0.png")[:, :, 0]
     # img = plt.imread("files/img1.png")[:, :, 0]
-    # img = plt.imread("files/img2.png")[:, :, 0]
+    img = plt.imread("files/img2.png")[:, :, 0]
 
-    # img = floodfill(img, 0, 0)
-    flood_fill(img, 0, 0)
+    img = flood_fill(img, 0, 0)
 
-    plt.imshow(img, cmap="gray")
-    plt.show(block=False)
-    plt.pause(5)
-    plt.clf()
 
 
 if __name__ == "__main__":
